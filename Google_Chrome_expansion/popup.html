@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; width: 320px; text-align: center; }
+        #userInfo { font-size: 16px; font-weight: bold; color: #0b74de; margin-bottom: 10px; }
+        #userIdDisplay { font-size: 14px; margin-bottom: 15px; color: #333; }
+        button { margin-top: 10px; padding: 10px; width: 100%; background: #0b74de; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0959a2; }
+        #settings { margin-top: 20px; display: none; }
+        input { width: 90%; padding: 8px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div id="userInfo">Загрузка пользователя...</div>
+    <div id="userIdDisplay"><strong>Ответственный ID:</strong> <span id="userId">Не задан</span></div>
+
+    <h2>Данные компании</h2>
+    <p><strong>Название:</strong> <span id="companyName">Загрузка...</span></p>
+    <p><strong>ИНН:</strong> <span id="inn">Загрузка...</span></p>
+    <p><strong>Руководитель:</strong> <span id="director">Загрузка...</span></p>
+    <p><strong>Телефоны:</strong> <span id="phones">Загрузка...</span></p>
+    <p><strong>Почты:</strong> <span id="emails">Загрузка...</span></p>
+
+    <button id="sendToBitrix">Отправить в Битрикс24</button>
+
+    <p><strong>Ответственный за лид:</strong> <span id="leadResponsible">Ожидание...</span></p>
+
+
+    <div id="settings">
+        <h3>Настройки</h3>
+        <input type="password" id="passwordInput" placeholder="Введите пароль для изменения">
+        <input type="text" id="newUserId" placeholder="Новый ID пользователя">
+        <button id="updateUserId">Обновить ID</button>
+    </div>
+
+    <p><a href="#" id="openSettings">Настройки</a></p>
+
+    <script src="popup.js"></script>
+</body>
+</html>
