@@ -23,3 +23,5 @@ ttkbootstrap,
 tkinterdnd2.
 
 **Автор: sambuka_lx**
+
+Для связи: https://t.me/Sambuka_lx
