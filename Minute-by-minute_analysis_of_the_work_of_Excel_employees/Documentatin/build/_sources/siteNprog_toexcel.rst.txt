@@ -1,0 +1,121 @@
+siteNprog_toexcel.py
+=====================
+
+Этот модуль предоставляет функции для загрузки данных из отчетов о сайтах и программах в Excel, а также для обновления листов сотрудников в Excel.
+
+Функции
+-------
+
+.. function:: load_program_data(file_path)
+
+    Функция для загрузки данных о программах из указанного файла и их обработки для дальнейшего использования.
+
+    **Описание**
+
+    1. Открывает и читает данные из файла по переданному пути.
+    2. Выполняет анализ и обработку данных для приведения их в формат, удобный для дальнейшей работы.
+    3. Возвращает загруженные и обработанные данные о программах.
+
+    **Аргументы**
+
+    - **file_path** *(str)*: Путь к файлу с данными о программах.
+
+    **Возвращаемое значение**
+
+    Обработанные данные о программах.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from siteNprog_toexcel import load_program_data
+
+        file_path_prog = '/path/to/program_data.xlsx'
+        program_data = load_program_data(file_path_prog)
+        print(f'Программные данные: {program_data}')
+
+
+
+.. function:: load_site_data(file_path)
+
+    Функция для загрузки данных о сайтах из указанного файла и их обработки для дальнейшего использования.
+
+    **Описание**
+
+    1. Открывает и читает данные из файла по переданному пути.
+    2. Выполняет анализ и обработку данных для приведения их в формат, удобный для дальнейшей работы.
+    3. Возвращает загруженные и обработанные данные о сайтах.
+
+    **Аргументы**
+
+    - **file_path** *(str)*: Путь к файлу с данными о сайтах.
+
+    **Возвращаемое значение**
+
+    Обработанные данные о сайтах.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from siteNprog_toexcel import load_site_data
+
+        file_path_site = '/path/to/site_data.xlsx'
+        site_data = load_site_data(file_path_site)
+        print(f'Данные сайтов: {site_data}')
+
+
+
+.. function:: update_employee_sheets(data, excel_path)
+
+    Функция для обновления листов сотрудников в Excel на основе предоставленных данных.
+
+    **Описание**
+
+    1. Открывает указанный Excel файл.
+    2. Обновляет листы сотрудников на основе переданных данных.
+    3. Сохраняет изменения в Excel файл.
+
+    **Аргументы**
+
+    - **data** *(разный тип данных)*: Данные для обновления листов сотрудников.
+    - **excel_path** *(str)*: Путь к Excel файлу, который необходимо обновить.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from siteNprog_toexcel import update_employee_sheets
+
+        employee_data = {'employee1': 'data1', 'employee2': 'data2'}
+        excel_file_path = '/path/to/employee_sheets.xlsx'
+        update_employee_sheets(employee_data, excel_file_path)
+        print('Листы сотрудников успешно обновлены')
+
+
+Пример использования:
+---------------------
+
+Вот пример использования функций `load_program_data`, `load_site_data` и `update_employee_sheets`:
+
+.. code-block:: python
+
+    from siteNprog_toexcel import load_program_data, load_site_data, update_employee_sheets
+
+    # Загрузка данных о программах
+    file_path_prog = '/path/to/program_data.xlsx'
+    program_data = load_program_data(file_path_prog)
+    print(f'Программные данные: {program_data}')
+
+    # Загрузка данных о сайтах
+    file_path_site = '/path/to/site_data.xlsx'
+    site_data = load_site_data(file_path_site)
+    print(f'Данные сайтов: {site_data}')
+
+    # Обновление листов сотрудников
+    employee_data = {'employee1': 'data1', 'employee2': 'data2'}
+    excel_file_path = '/path/to/employee_sheets.xlsx'
+    update_employee_sheets(employee_data, excel_file_path)
+    print('Листы сотрудников успешно обновлены')
+
+---

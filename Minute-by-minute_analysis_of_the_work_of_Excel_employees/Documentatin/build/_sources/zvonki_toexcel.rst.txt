@@ -1,0 +1,70 @@
+zvonki_toexcel.py
+=================
+
+Этот модуль содержит функцию для преобразования данных звонков в формат Excel.
+
+Функции
+-------
+
+.. function:: zvonkiExcel(input_path, output_path)
+
+    Функция для преобразования данных звонков в файл формата Excel.
+
+    **Описание**
+
+    1. Получает путь к входному файлу с данными звонков и путь для сохранения Excel-файла.
+    2. Читает данные из входного файла.
+    3. Обрабатывает данные и преобразует их в формат, подходящий для записи в Excel.
+    4. Сохраняет данные в файл формата Excel по указанному пути.
+    5. Возвращает путь к созданному Excel-файлу.
+
+    **Аргументы**
+
+    - **input_path** *(str)*: Путь к входному файлу с данными звонков.
+    - **output_path** *(str)*: Путь для сохранения преобразованных данных в формате Excel.
+
+    **Возвращаемое значение**
+
+    Строка, содержащая путь к созданному файлу формата Excel.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from zvonki_toexcel import zvonkiExcel
+
+        input_file = '/path/to/input/calls_data.csv'
+        output_file = '/path/to/output/calls_data.xlsx'
+        excel_file_path = zvonkiExcel(input_file, output_file)
+        print(f'Данные звонков сохранены в файл: {excel_file_path}')
+
+
+Переменные
+----------
+
+
+.. attribute:: input_path
+
+    Локальная переменная внутри функции `zvonkiExcel`. Хранит путь к входному файлу с данными звонков.
+
+
+.. attribute:: output_path
+
+    Локальная переменная внутри функции `zvonkiExcel`. Хранит путь для сохранения данных в формате Excel.
+
+
+Пример использования:
+---------------------
+
+Вот пример использования функции `zvonkiExcel`:
+
+.. code-block:: python
+
+    from zvonki_toexcel import zvonkiExcel
+
+    input_file = '/path/to/input/calls_data.csv'
+    output_file = '/path/to/output/calls_data.xlsx'
+    excel_file_path = zvonkiExcel(input_file, output_file)
+    print(f'Данные звонков сохранены в файл: {excel_file_path}')
+
+---

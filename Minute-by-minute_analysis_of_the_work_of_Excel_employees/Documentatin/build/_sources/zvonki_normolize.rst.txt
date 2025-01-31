@@ -1,0 +1,118 @@
+zvonki_normolize.py
+===================
+
+Этот модуль содержит функции для создания копий файлов и обработки данных о звонках с их последующим сохранением.
+
+Функции
+-------
+
+
+.. function:: create_file_copy(src_path, dest_path)
+
+    Функция для создания копии файла.
+
+    **Описание**
+
+    1. Получает путь к исходному файлу и целевую директорию.
+    2. Копирует файл из исходного пути в целевую директорию.
+    3. Возвращает путь к созданной копии файла.
+
+    **Аргументы**
+
+    - **src_path** *(str)*: Путь к исходному файлу, который нужно копировать.
+    - **dest_path** *(str)*: Целевая директория, куда будет сохранена копия файла.
+
+    **Возвращаемое значение**
+
+    Строка, содержащая путь к созданной копии файла.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from zvonki_normolize import create_file_copy
+
+        source_file = '/path/to/source/file.xlsx'
+        destination_directory = '/path/to/destination/'
+        copied_file_path = create_file_copy(source_file, destination_directory)
+        print(f'Копия файла создана: {copied_file_path}')
+
+
+
+.. function:: process_and_save_calls_data(input_path, output_path)
+
+    Функция для обработки данных звонков и их сохранения в новый файл.
+
+    **Описание**
+
+    1. Получает путь к входному файлу с данными звонков и путь для сохранения обработанных данных.
+    2. Читает данные из входного файла и выполняет обработку.
+    3. Сохраняет обработанные данные в указанный выходной файл.
+    4. Возвращает путь к файлу с обработанными данными.
+
+    **Аргументы**
+
+    - **input_path** *(str)*: Путь к входному файлу с данными звонков.
+    - **output_path** *(str)*: Путь для сохранения обработанных данных.
+
+    **Возвращаемое значение**
+
+    Строка, содержащая путь к файлу с обработанными данными.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from zvonki_normolize import process_and_save_calls_data
+
+        input_file = '/path/to/input/calls_data.xlsx'
+        output_file = '/path/to/output/processed_data.xlsx'
+        processed_file_path = process_and_save_calls_data(input_file, output_file)
+        print(f'Обработанные данные сохранены в файл: {processed_file_path}')
+
+
+Переменные
+----------
+
+.. attribute:: src_path
+
+    Локальная переменная внутри функции `create_file_copy`. Хранит путь к исходному файлу.
+
+
+.. attribute:: dest_path
+
+    Локальная переменная внутри функции `create_file_copy`. Хранит целевую директорию для копии файла.
+
+
+.. attribute:: input_path
+
+    Локальная переменная внутри функции `process_and_save_calls_data`. Хранит путь к входному файлу с данными звонков.
+
+
+.. attribute:: output_path
+
+    Локальная переменная внутри функции `process_and_save_calls_data`. Хранит путь для сохранения обработанных данных.
+
+
+Пример использования:
+---------------------
+
+Вот пример использования функций `create_file_copy` и `process_and_save_calls_data`:
+
+.. code-block:: python
+
+    from zvonki_normolize import create_file_copy, process_and_save_calls_data
+
+    # Пример создания копии файла
+    source_file = '/path/to/source/file.xlsx'
+    destination_directory = '/path/to/destination/'
+    copied_file_path = create_file_copy(source_file, destination_directory)
+    print(f'Копия файла создана: {copied_file_path}')
+
+    # Пример обработки и сохранения данных звонков
+    input_file = '/path/to/input/calls_data.xlsx'
+    output_file = '/path/to/output/processed_data.xlsx'
+    processed_file_path = process_and_save_calls_data(input_file, output_file)
+    print(f'Обработанные данные сохранены в файл: {processed_file_path}')
+
+---

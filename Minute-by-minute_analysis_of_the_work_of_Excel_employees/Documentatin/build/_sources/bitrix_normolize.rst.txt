@@ -1,0 +1,199 @@
+bitrix_normolize.py
+===================
+
+Этот модуль предназначен для нормализации данных из Bitrix, включая преобразование HTML в XLSX, форматирование данных времени, корректировку времени в зависимости от часового пояса и замену значений в файле XLSX.
+
+Атрибуты
+--------
+
+
+.. attribute:: bitrix_path
+
+    Строковая переменная, хранящая путь к файлу Bitrix.
+
+
+.. attribute:: bit_replacements
+
+    Словарь, содержащий значения для замены в данных Bitrix.
+
+
+.. attribute:: employee_timezones
+
+    Словарь, сопоставляющий сотрудников с их часовыми поясами.
+
+
+.. attribute:: company_timezone
+
+    Строковая переменная, содержащая часовой пояс компании.
+
+
+.. attribute:: file_path_bit
+
+    Строковая переменная, хранящая путь к файлу Bitrix после преобразования.
+
+Функции
+-------
+
+
+.. function:: convert_html_to_xlsx(html_path, xlsx_path)
+
+    Функция для преобразования HTML-файла в файл формата XLSX.
+
+    **Описание**
+
+    1. Получает путь к HTML-файлу и путь для сохранения XLSX-файла.
+    2. Читает и преобразует HTML-данные в формат XLSX.
+    3. Сохраняет данные в файл формата XLSX по указанному пути.
+    4. Возвращает путь к созданному файлу формата XLSX.
+
+    **Аргументы**
+
+    - **html_path** *(str)*: Путь к HTML-файлу, который нужно преобразовать.
+    - **xlsx_path** *(str)*: Путь для сохранения файла формата XLSX.
+
+    **Возвращаемое значение**
+
+    Строка, содержащая путь к созданному файлу формата XLSX.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from bitrix_normolize import convert_html_to_xlsx
+
+        html_file = '/path/to/input/file.html'
+        xlsx_file = '/path/to/output/file.xlsx'
+        result_path = convert_html_to_xlsx(html_file, xlsx_file)
+        print(f'HTML преобразован в XLSX и сохранен в: {result_path}')
+
+
+
+.. function:: format_time_data(data)
+
+    Функция для форматирования данных времени.
+
+    **Описание**
+
+    1. Получает данные для форматирования.
+    2. Форматирует данные времени в указанный формат.
+    3. Возвращает отформатированные данные.
+
+    **Аргументы**
+
+    - **data** *(list)*: Список данных для форматирования.
+
+    **Возвращаемое значение**
+
+    Список, содержащий отформатированные данные времени.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from bitrix_normolize import format_time_data
+
+        raw_data = [...]  # сырые данные для форматирования
+        formatted_data = format_time_data(raw_data)
+        print(f'Отформатированные данные: {formatted_data}')
+
+
+
+.. function:: adjust_time_for_timezone(data, timezone)
+
+    Функция для корректировки времени в данных в зависимости от указанного часового пояса.
+
+    **Описание**
+
+    1. Получает данные и часовой пояс для корректировки.
+    2. Корректирует время в данных в соответствии с указанным часовым поясом.
+    3. Возвращает скорректированные данные.
+
+    **Аргументы**
+
+    - **data** *(list)*: Список данных для корректировки.
+    - **timezone** *(str)*: Строка, содержащая часовой пояс.
+
+    **Возвращаемое значение**
+
+    Список, содержащий данные с корректировкой по часовому поясу.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from bitrix_normolize import adjust_time_for_timezone
+
+        data = [...]  # данные для корректировки
+        tz = 'UTC+3'  # целевой часовой пояс
+        adjusted_data = adjust_time_for_timezone(data, tz)
+        print(f'Данные, скорректированные по часовому поясу {tz}: {adjusted_data}')
+
+
+
+.. function:: replace_values_in_xlsx(xlsx_path, replacements)
+
+    Функция для замены значений в файле формата XLSX.
+
+    **Описание**
+
+    1. Получает путь к файлу XLSX и словарь значений для замены.
+    2. Читает данные из файла XLSX.
+    3. Заменяет значения в данных в соответствии с указанным словарем.
+    4. Сохраняет измененные данные обратно в файл XLSX.
+    5. Возвращает путь к измененному файлу формата XLSX.
+
+    **Аргументы**
+
+    - **xlsx_path** *(str)*: Путь к файлу формата XLSX для замены значений.
+    - **replacements** *(dict)*: Словарь значений для замены.
+
+    **Возвращаемое значение**
+
+    Строка, содержащая путь к измененному файлу формата XLSX.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from bitrix_normolize import replace_values_in_xlsx
+
+        xlsx_file = '/path/to/input/file.xlsx'
+        replacements = {'old_value': 'new_value', ...}  # словарь значений для замены
+        result_path = replace_values_in_xlsx(xlsx_file, replacements)
+        print(f'Значения в файле XLSX заменены, результат сохранен в: {result_path}')
+
+
+Пример использования:
+---------------------
+
+Вот пример использования функций из файла `bitrix_normolize.py`:
+
+.. code-block:: python
+
+    from bitrix_normolize import (convert_html_to_xlsx, format_time_data,
+                                  adjust_time_for_timezone, replace_values_in_xlsx)
+
+    # Пример преобразования HTML в XLSX
+    html_file = '/path/to/input/file.html'
+    xlsx_file = '/path/to/output/file.xlsx'
+    result_path = convert_html_to_xlsx(html_file, xlsx_file)
+    print(f'HTML преобразован в XLSX и сохранен в: {result_path}')
+
+    # Пример форматирования данных времени
+    raw_data = [...]  # сырые данные для форматирования
+    formatted_data = format_time_data(raw_data)
+    print(f'Отформатированные данные: {formatted_data}')
+
+    # Пример корректировки времени по часовому поясу
+    data = [...]  # данные для корректировки
+    tz = 'UTC+3'  # целевой часовой пояс
+    adjusted_data = adjust_time_for_timezone(data, tz)
+    print(f'Данные, скорректированные по часовому поясу {tz}: {adjusted_data}')
+
+    # Пример замены значений в файле XLSX
+    xlsx_file = '/path/to/input/file.xlsx'
+    replacements = {'old_value': 'new_value', ...}  # словарь значений для замены
+    result_path = replace_values_in_xlsx(xlsx_file, replacements)
+    print(f'Значения в файле XLSX заменены, результат сохранен в: {result_path}')
+
+---

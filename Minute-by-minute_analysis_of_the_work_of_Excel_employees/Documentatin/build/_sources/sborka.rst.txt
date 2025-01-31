@@ -1,0 +1,99 @@
+Сборка проекта
+==============
+
+Для сборки проекта вам понадобится:
+
+1. `PyInstaller <https://pyinstaller.org/en/stable/usage.html>`_
+
+2. `Inno Setup Compiler <https://jrsoftware.org/isdl.php#stable>`_
+
+.. dropdown:: :blue:`PyInstaller`
+
+    Изначально вам нужно собрать проект в .exe при помощи **PyInstaller**
+
+    .. code-block::
+
+        pip install pyinstaller
+
+        pyinstaller --onefile --windowed --icon=icon.ico test.py
+
+    **--onefile** - параметр для одного .exe файла
+
+    **--windowed** - параметр для открытия приложения в окне
+
+    **--icon** - параметр для иконки приложения (icon.ico - имя фала иконки)
+
+    **test.py** - имя сборочного файла
+
+    Еще обычно используется параметр --noconsole, но в данном случае это не требуется.
+
+    После сборки проекта в .exe вы преходите в **Inno Setup Compiler**.
+
+.. dropdown:: :blue:`Inno Setup Compiler`
+
+    В данном приложении вы создаете установщик. Вам потребуется **.iss** файл.
+
+   .. dropdown:: example.iss
+
+        [Setup]
+
+        AppName=AnalyzeOP
+
+        AppVersion=1.0
+
+        DefaultDirName={autopf}\AnalyzeOP
+
+        DefaultGroupName=AnalyzeOP
+
+        OutputBaseFilename=AnalyzeOPInstaller
+
+        SetupIconFile= :red:`"path/to/icon/icon.ico"`
+
+        Compression=lzma
+
+        SolidCompression=yes
+
+
+        [Files]
+
+        ; Основное приложение
+
+        Source: :red:`"path/to/.exe/file/test.exe"`; DestDir: "{app}"; Flags: ignoreversion
+
+        ; Документация будет устанавливаться только если выбрана галочка
+
+        Source: :red:`"path/to/documentation/docs/*"`; DestDir: "{app}/docs"; Flags: recursesubdirs createallsubdirs; Components: doc_component
+
+        ; Добавляем иконку
+
+        Source: :red:`"path/to/icon/icon.ico"`; DestDir: "{app}"; Flags: ignoreversion
+
+
+        [Icons]
+
+        ; Ярлык для запуска приложения
+
+        Name: "{commondesktop}\AnalyzeOP"; Filename: "{app}\test.exe"; IconFilename: "{app}\icon.ico"
+
+        ; Ярлык для документации (если выбрана установка)
+
+        Name: "{commondesktop}\AnalyzeOP Documentation"; Filename: "{app}\docs\build\html\index.html"; IconFilename: "{app}\icon.ico"; Components: doc_component
+
+
+        [Run]
+
+        ; Запуск приложения после завершения установки (по желанию)
+
+        Filename: "{app}\test.exe"; Description: "{cm:LaunchProgram,AnalyzeOP}"; Flags: nowait postinstall skipifsilent
+
+
+        [Components]
+
+        ; Компонент для установки документации
+
+        Name: "doc_component"; Description: "Установить документацию"; Types: full custom
+
+    :red:`Красное` - места, где вам нужно изменить пути до определенных файлов.
+
+    Далее вы компилируете этот **.iss** файл и запускаете установщик.
+

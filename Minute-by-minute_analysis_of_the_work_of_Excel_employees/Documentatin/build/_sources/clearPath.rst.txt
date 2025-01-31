@@ -1,0 +1,246 @@
+clearPath.py
+============
+
+Этот модуль содержит функции для удаления различных типов файлов и папок, а также для конвертации файлов формата XLS в XLSX.
+
+Функции
+-------
+
+
+.. function:: delete_png_files(directory)
+
+    Функция для удаления всех PNG-файлов в указанной директории.
+
+    **Описание**
+
+    1. Получает путь к директории.
+    2. Проходит по всем файлам в директории и её поддиректориях.
+    3. Удаляет файлы с расширением .png.
+    4. Возвращает количество удаленных файлов.
+
+    **Аргументы**
+
+    - **directory** *(str)*: Путь к директории, в которой нужно удалить PNG-файлы.
+
+    **Возвращаемое значение**
+
+    Целое число, представляющее количество удаленных файлов.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from clearPath import delete_png_files
+
+        directory_path = '/path/to/directory'
+        deleted_files_count = delete_png_files(directory_path)
+        print(f'Всего удалено PNG-файлов: {deleted_files_count}')
+
+
+
+.. function:: delete_small_folders(directory, size_limit)
+
+    Функция для удаления всех папок, размер которых меньше указанного предела.
+
+    **Описание**
+
+    1. Получает путь к директории и размерный предел.
+    2. Проходит по всем подпапкам в указанной директории.
+    3. Удаляет папки, размер которых меньше указанного предела.
+    4. Возвращает количество удаленных папок.
+
+    **Аргументы**
+
+    - **directory** *(str)*: Путь к директории, в которой нужно удалить небольшие папки.
+    - **size_limit** *(int)*: Размерный предел в байтах, ниже которого папки будут удалены.
+
+    **Возвращаемое значение**
+
+    Целое число, представляющее количество удаленных папок.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from clearPath import delete_small_folders
+
+        directory_path = '/path/to/directory'
+        size_limit = 1024  # 1 KB
+        deleted_folders_count = delete_small_folders(directory_path, size_limit)
+        print(f'Всего удалено папок размером меньше {size_limit} байт: {deleted_folders_count}')
+
+
+
+.. function:: convert_xls_to_xlsx(directory)
+
+    Функция для конвертации всех файлов формата XLS в указанной директории в формат XLSX.
+
+    **Описание**
+
+    1. Получает путь к директории.
+    2. Проходит по всем файлам с расширением .xls в указанной директории.
+    3. Конвертирует каждый файл .xls в файл .xlsx.
+    4. Возвращает количество сконвертированных файлов.
+
+    **Аргументы**
+
+    - **directory** *(str)*: Путь к директории, в которой нужно конвертировать файлы .xls в .xlsx.
+
+    **Возвращаемое значение**
+
+    Целое число, представляющее количество сконвертированных файлов.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from clearPath import convert_xls_to_xlsx
+
+        directory_path = '/path/to/directory'
+        converted_files_count = convert_xls_to_xlsx(directory_path)
+        print(f'Всего сконвертировано файлов: {converted_files_count}')
+
+
+
+.. function:: delete_x_files(directory, extension)
+
+    Функция для удаления всех файлов с указанным расширением в указанной директории.
+
+    **Описание**
+
+    1. Получает путь к директории и расширение файлов.
+    2. Проходит по всем файлам в директории и её поддиректориях.
+    3. Удаляет файлы с указанным расширением.
+    4. Возвращает количество удаленных файлов.
+
+    **Аргументы**
+
+    - **directory** *(str)*: Путь к директории, в которой нужно удалить файлы.
+    - **extension** *(str)*: Расширение файлов, которые нужно удалить.
+
+    **Возвращаемое значение**
+
+    Целое число, представляющее количество удаленных файлов.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from clearPath import delete_x_files
+
+        directory_path = '/path/to/directory'
+        file_extension = '.log'
+        deleted_files_count = delete_x_files(directory_path, file_extension)
+        print(f'Всего удалено файлов с расширением {file_extension}: {deleted_files_count}')
+
+
+
+.. function:: delete_folders_based_on_C2_recursive(directory, criterion_function)
+
+    Функция для рекурсивного удаления папок, соответствующих указанному критерию.
+
+    **Описание**
+
+    1. Получает путь к директории и функцию критерия.
+    2. Рекурсивно проходит по всем папкам в указанной директории.
+    3. Удаляет папки, которые соответствуют указанному критерию.
+    4. Возвращает количество удаленных папок.
+
+    **Аргументы**
+
+    - **directory** *(str)*: Путь к директории, в которой нужно удалить папки.
+    - **criterion_function** *(function)*: Функция, определяющая критерий для удаления папок.
+
+    **Возвращаемое значение**
+
+    Целое число, представляющее количество удаленных папок.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from clearPath import delete_folders_based_on_C2_recursive
+
+        directory_path = '/path/to/directory'
+
+        def criterion(folder_path):
+            # Определите ваш критерий здесь
+            return True
+
+        deleted_folders_count = delete_folders_based_on_C2_recursive(directory_path, criterion)
+        print(f'Всего удалено папок по критерию: {deleted_folders_count}')
+
+
+
+.. function:: delete_pacs(directory)
+
+    Функция для удаления всех файлов PAC в указанной директории.
+
+    **Описание**
+
+    1. Получает путь к директории.
+    2. Проходит по всем файлам в директории и её поддиректориях.
+    3. Удаляет файлы с расширением .pac.
+    4. Возвращает количество удаленных файлов.
+
+    **Аргументы**
+
+    - **directory** *(str)*: Путь к директории, в которой нужно удалить PAC-файлы.
+
+    **Возвращаемое значение**
+
+    Целое число, представляющее количество удаленных файлов.
+
+    **Пример использования**:
+
+    .. code-block:: python
+
+        from clearPath import delete_pacs
+
+        directory_path = '/path/to/directory'
+        deleted_files_count = delete_pacs(directory_path)
+        print(f'Всего удалено PAC-файлов: {deleted_files_count}')
+
+
+Пример использования:
+---------------------
+
+Вот пример использования функций из файла `clearPath.py`:
+
+.. code-block:: python
+
+    from clearPath import (delete_png_files, delete_small_folders, convert_xls_to_xlsx,
+                           delete_x_files, delete_folders_based_on_C2_recursive, delete_pacs)
+
+    # Пример удаления PNG-файлов
+    directory_path = '/path/to/directory'
+    deleted_files_count = delete_png_files(directory_path)
+    print(f'Всего удалено PNG-файлов: {deleted_files_count}')
+
+    # Пример удаления небольших папок
+    size_limit = 1024  # 1 KB
+    deleted_folders_count = delete_small_folders(directory_path, size_limit)
+    print(f'Всего удалено папок размером меньше {size_limit} байт: {deleted_folders_count}')
+
+    # Пример конвертации файлов XLS в XLSX
+    converted_files_count = convert_xls_to_xlsx(directory_path)
+    print(f'Всего сконвертировано файлов: {converted_files_count}')
+
+    # Пример удаления файлов с определенным расширением
+    file_extension = '.log'
+    deleted_files_count = delete_x_files(directory_path, file_extension)
+    print(f'Всего удалено файлов с расширением {file_extension}: {deleted_files_count}')
+
+    # Пример рекурсивного удаления папок по критерию
+    def criterion(folder_path):
+        # Определите ваш критерий здесь
+        return True
+
+    deleted_folders_count = delete_folders_based_on_C2_recursive(directory_path, criterion)
+    print(f'Всего удалено папок по критерию: {deleted_folders_count}')
+
+    # Пример удаления PAC-файлов
+    deleted_files_count = delete_pacs(directory_path)
+    print(f'Всего удалено PAC-файлов: {deleted_files_count}')
+
+---
