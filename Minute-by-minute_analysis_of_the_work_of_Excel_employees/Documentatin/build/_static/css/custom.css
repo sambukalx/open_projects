@@ -1,0 +1,11 @@
+.code {
+    color: red;
+    font-weight: bold;
+}
+
+.function-highlight {
+    color: #00BFFF; /* Голубой цвет */
+    font-weight: bold; /* Опционально, можно убрать, если не нужен жирный текст */
+}
+
+
